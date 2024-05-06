@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #041322;
+            color: #6cc4c1;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+            border: 1px solid #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        nav ul li:hover {
+            background-color: #6cc4c1;
+        }
+        nav ul li:hover a {
+            color: #333;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #041322;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: inline-block;
+            width: 200px; /* Set width to match text boxes */
+            text-align: left; /* Left-align the labels */
+            margin-right: 20px;
+        }
+        .form-group input, 
+        .form-group select {
+            width: 200px; /* Set width to roughly 2 inches */
+            margin-right: 20px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ELECTRA SYNERGY</h1>
+        <h3> A MACHINE LEARNING APPROACH FOR EV CHARGING OPTIMIZATION</h3>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Prediction</a></li>
+                <li><a href="/performance">Model Performance</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="background-image: url('/static/4back.jpg'); background-size: cover; background-position: center; padding: 20px; height: 100%;">
+        <div style="width: 600px; margin: 100px auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+            <h2>Enter EV Details</h2>
+            <form method="post" action="/predict">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start_hour">Plug-In Start Time:</label>
+                        <input type="text" id="start_hour" name="start_hour" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="end_hour">Plug-Out End Time:</label>
+                        <input type="text" id="end_hour" name="end_hour" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="duration">Charging Duration (Hours):</label>
+                        <input type="text" id="duration" name="duration" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BatteryCapacity">Battery Capacity (kWh):</label>
+                        <input type="text" id="BatteryCapacity" name="BatteryCapacity">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ChargerOutput">Charger Output (kW):</label>
+                        <input type="text" id="ChargerOutpur" name="ChargerOutput">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="DrivingSpeed">Driving Speed (Km/Hr):</label>
+                        <input type="text" id="DrivingSpeed" name="DrivingSpeed">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="VehicleWeight">Vehicle Weight (Kg):</label>
+                        <input type="text" id="VehicleWeight" name="VehicleWeight">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="BatteryTemperature">Battery Temperature (C°):</label>
+                        <input type="text" id="BatteryTemperature" name="BatteryTemperature">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="HVAC_Usage">HVAC Usage:</label>
+                        <select id="HVAC_Usage" name="HVAC_Usage">
+                            <option value="ON">ON</option>
+                            <option value="OFF">OFF</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="TerrainType">Terrain Type:</label>
+                        <select id="TerrainType" name="TerrainType">
+                            <option value="Flat">Flat</option>
+                            <option value="Hills_Or_Mountains">Hills / Mountains</option>
+                            <option value="Urban_Or_City">Urban / City</option>
+                            <option value="Highway">Highway</option>
+                            <option value="OffRoad">Off Road</option>
+                            <option value="Wet_Or_Slippery">Wet / Slippery</option>
+                            <option value="Snow_Or_Ice">Snow / Ice</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="BatteryAge">Battery Age (Years):</label>
+                        <input type="text" id="BatteryAge" name="BatteryAge">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="RegenerativeBraking">Regenerative Braking:</label>
+                        <select id="RegenerativeBraking" name="RegenerativeBraking">
+                            <option value="ON">ON</option>
+                            <option value="OFF">OFF</option>
+                        </select>
+                    </div>
+                </div>
+
+                <input type="submit" value="Predict">
+            </form>
+        
+            {% if prediction %}
+                <h3>Prediction:</h3>
+                <p>{{ prediction }}</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <p>Project By Karanveer Singh &copy; &trade;</p>
+    </footer>
+</body>
+</html>
