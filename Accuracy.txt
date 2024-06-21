@@ -1,0 +1,22 @@
+Prediction Of EV Charging Optimization Using Machine Learning.
+
+Algorithm / Model: K-Nearest Neighbor & Random Forest Regressor (Ensemble Approach)
+
+Training set is 1.0 and 
+Accuracy Score on Test Set is 0.98 i.e. 98 %
+
+Classification Report:
+                         precision    recall  f1-score   support
+
+                      0       1.00      1.00      1.00         7
+Between 12 and 15 hours       0.97      0.97      0.97       199
+Between 15 and 18 hours       0.96      0.95      0.96       139
+  Between 3 and 6 hours       0.97      0.98      0.97       162
+ Between 6 and 9  hours       0.97      0.95      0.96       100
+ Between 9 and 12 hours       0.99      0.98      0.99       207
+      Less than 3 hours       0.99      1.00      1.00       356
+     More than 18 hours       0.98      0.99      0.99       206
+
+               accuracy                           0.98      1376
+              macro avg       0.98      0.98      0.98      1376
+           weighted avg       0.98      0.98      0.98      1376
